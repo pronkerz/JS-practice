@@ -18,29 +18,50 @@
 
 // ОПЕРАТОРЫ
 
-console.log('array' + '- object');
-console.log( 4 + '- object');
-console.log( 4 + + '5');
+// console.log('array' + '- object');
+// console.log( 4 + '- object');
+// console.log( 4 + + '5');
 
-let incr = 10,
-    decr = 10;
+// let incr = 10,
+//     decr = 10;
 
-console.log(++incr);
-console.log(--decr);
+// console.log(++incr);
+// console.log(--decr);
 
-console.log(5%2);
-console.log(8%2);
-
-
-console.log(2*8 === 9);
-console.log(2*4 === 8);
-console.log(2*4 === '8');
-console.log(2*4 == '8');
+// console.log(5%2);
+// console.log(8%2);
 
 
-const isChecked = true,
-      isClose = false;
+// console.log(2*8 === 9);
+// console.log(2*4 === 8);
+// console.log(2*4 === '8');
+// console.log(2*4 == '8');
 
-console.log(isChecked && isClose);
-console.log(isChecked || isClose);
-console.log(!isChecked || isClose);
+
+// const isChecked = true,
+//       isClose = false;
+
+// console.log(isChecked && isClose);
+// console.log(isChecked || isClose);
+// console.log(!isChecked || isClose);
+
+
+const numberOfFilms = +prompt('How many films have your watched?'),
+      lastWatchedFilm = prompt('Can you name any film you watched?'),
+      FilmRating = prompt('How can you rate it?'),
+      lastWatchedFilmSecondQuestion = prompt('Can you name any film you watched?'),
+      FilmRatingSecondQuestion = prompt('How can you rate it?');
+
+const personalMovieDB = {
+   const: numberOfFilms,
+   movies: {},
+   actors: {},
+   genres: [],
+   privat: false,
+   april: false
+};
+
+personalMovieDB.movies[lastWatchedFilm] = FilmRating;
+personalMovieDB.movies[lastWatchedFilmSecondQuestion] = FilmRatingSecondQuestion;
+
+console.log(personalMovieDB);

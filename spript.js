@@ -46,14 +46,11 @@
 // console.log(!isChecked || isClose);
 
 
-const numberOfFilms = +prompt('How many films have your watched?'),
-      lastWatchedFilm = prompt('Can you name any film you watched?'),
-      FilmRating = prompt('How can you rate it?'),
-      lastWatchedFilmSecondQuestion = prompt('Can you name any film you watched?'),
-      FilmRatingSecondQuestion = prompt('How can you rate it?');
+const numberOfFilms = +prompt('How many films have your watched?');
+
 
 const personalMovieDB = {
-   const: numberOfFilms,
+   count: numberOfFilms,
    movies: {},
    actors: {},
    genres: [],
@@ -61,7 +58,29 @@ const personalMovieDB = {
    april: false
 };
 
-personalMovieDB.movies[lastWatchedFilm] = FilmRating;
-personalMovieDB.movies[lastWatchedFilmSecondQuestion] = FilmRatingSecondQuestion;
+
+for (let i =0; i < 2; i++) {
+   const lastWatchedFilm = prompt('Can you name any film you watched?'),
+         FilmRating = prompt('How can you rate it?');
+   
+   if (lastWatchedFilm != null && FilmRating != null && 
+      lastWatchedFilm != '' && FilmRating != '' && lastWatchedFilm.length < 50) {
+         personalMovieDB.movies[lastWatchedFilm] = FilmRating;
+      } else {
+         i--;
+         alert('Answer the questions, please');
+      }
+      
+}
+
+if (personalMovieDB.count < 10) {
+   console.log('You did not watch a lot of movies');
+} else if (personalMovieDB.count >= 10 && personalMovieDB.count <30 ) {
+   console.log('You are an ordinary spectator');
+} else if (personalMovieDB.count >= 30) {
+   console.log ('You are a cinephile');
+} else {
+   console.log('Error occured');
+}
 
 console.log(personalMovieDB);

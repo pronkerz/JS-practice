@@ -46,41 +46,70 @@
 // console.log(!isChecked || isClose);
 
 
-const numberOfFilms = +prompt('How many films have your watched?');
+let numberOfFilms;
 
+function start() {
+	numberOfFilms = +prompt('How many films have your watched?', '');
+
+	while (numberOfFilms == '' || numberOfFilms == null || isNaN(numberOfFilms)) {
+		numberOfFilms = +prompt('How many films have your watched?', '');  
+	}
+}
+
+start();
 
 const personalMovieDB = {
-   count: numberOfFilms,
-   movies: {},
-   actors: {},
-   genres: [],
-   privat: false,
-   april: false
+	count: numberOfFilms,
+	movies: {},
+	actors: {},
+	genres: [],
+	privat: false,
 };
 
-
-for (let i =0; i < 2; i++) {
-   const lastWatchedFilm = prompt('Can you name any film you watched?'),
-         FilmRating = prompt('How can you rate it?');
-   
-   if (lastWatchedFilm != null && FilmRating != null && 
-      lastWatchedFilm != '' && FilmRating != '' && lastWatchedFilm.length < 50) {
-         personalMovieDB.movies[lastWatchedFilm] = FilmRating;
-      } else {
-         i--;
-         alert('Answer the questions, please');
-      }
-      
+function rememberMyFilms() {
+	for (let i =0; i < 2; i++) {
+		const lastWatchedFilm = prompt('Can you name any film you watched?'),
+				FilmRating = prompt('How can you rate it?');
+		
+		if (lastWatchedFilm != null && FilmRating != null && 
+			lastWatchedFilm != '' && FilmRating != '' && lastWatchedFilm.length < 50) {
+				personalMovieDB.movies[lastWatchedFilm] = FilmRating;
+			} else {
+				i--;
+				alert('Answer the questions, please');
+			}
+			
+	}
 }
 
-if (personalMovieDB.count < 10) {
-   console.log('You did not watch a lot of movies');
-} else if (personalMovieDB.count >= 10 && personalMovieDB.count <30 ) {
-   console.log('You are an ordinary spectator');
-} else if (personalMovieDB.count >= 30) {
-   console.log ('You are a cinephile');
-} else {
-   console.log('Error occured');
+rememberMyFilms(); 
+
+function detectPersonalLevel() {
+	if (personalMovieDB.count < 10) {
+		console.log('You did not watch a lot of movies');
+	} else if (personalMovieDB.count >= 10 && personalMovieDB.count <30 ) {
+		console.log('You are an ordinary spectator');
+	} else if (personalMovieDB.count >= 30) {
+		console.log ('You are a cinephil');
+	} else {
+		console.log('Error occured');
+	}
 }
 
-console.log(personalMovieDB);
+detectPersonalLevel();
+
+function showMyDB(hidden) {
+	if(!hidden) {
+		console.log(personalMovieDB);
+	}
+ }
+
+showMyDB(personalMovieDB.privat);
+
+function writeYourGenres() {
+	for (let i = 1; i <= 3; i++) {
+	personalMovieDB.genres[i - 1] = prompt(`What is your favourite genre at number ${i}?`);
+	}
+}
+
+writeYourGenres();
